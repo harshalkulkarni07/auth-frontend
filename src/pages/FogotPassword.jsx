@@ -23,15 +23,15 @@ function ForgotPassword() {
         }
       );
       console.log(data)
-      if (data.accessToken ===null) {
+      if (data.resetToken === null) {
         if (data.errors) {
           const { email, password } = data.errors;
           if (email) generateError(email);
           else if (password) generateError(password);
         } 
       }else {
-        localStorage.setItem("jwt",data.accessToken)
-        navigate("/");
+        localStorage.setItem("jwt",data.resetToken)
+        navigate("/resetpassword");
       }
     } catch (ex) {
       console.log(ex);
